@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCalc(t *testing.T) {
+func TestDTW(t *testing.T) {
 	testCases := []struct {
 		desc    string
 		s       interface{}
