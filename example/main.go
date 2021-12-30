@@ -1,9 +1,3 @@
-![](dtw.png)
-# dtw
-dtw implements DTW([Dynamic Time Warping](https://en.wikipedia.org/wiki/Dynamic_time_warping)) algorithm using golang.
-
-## Usage
-```
 package main
 
 import (
@@ -38,4 +32,3 @@ func main() {
 	fmt.Println("matrix:")
 	dtw.Draw(os.Stdout)
 }
-```
