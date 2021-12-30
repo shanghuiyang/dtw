@@ -1,5 +1,7 @@
 ![](dtw.png)
+
 # dtw
+![example workflow](https://github.com/shanghuiyang/dtw/actions/workflows/ci.yml/badge.svg)
 dtw implements DTW([Dynamic Time Warping](https://en.wikipedia.org/wiki/Dynamic_time_warping)) algorithm using golang.
 
 ## Usage
