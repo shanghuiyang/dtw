@@ -1,7 +1,7 @@
 ![](dtw.png)
 
 # dtw
-[![Build status](https://github.com/shanghuiyang/dtw/workflows/CI/badge.svg)](https://github.com/shanghuiyang/dtw/actions)
+[![CI](https://github.com/shanghuiyang/dtw/actions/workflows/ci.yml/badge.svg)](https://github.com/shanghuiyang/dtw/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/shanghuiyang/dtw/blob/main/LICENSE)
 
 dtw implements DTW([Dynamic Time Warping](https://en.wikipedia.org/wiki/Dynamic_time_warping)) algorithm using golang.
