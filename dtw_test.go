@@ -8,6 +8,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
+type point struct {
+	x float64
+	y float64
+}
+
 func TestDTW(t *testing.T) {
 	testCases := []struct {
 		desc    string
@@ -25,8 +30,7 @@ func TestDTW(t *testing.T) {
 			df: func(x, y interface{}) float64 {
 				xx := x.(int)
 				yy := y.(int)
-				diff := float64(xx - yy)
-				return math.Sqrt(diff * diff)
+				return math.Abs(float64(xx - yy))
 			},
 			dist: 15,
 			path: [][2]int{
@@ -41,12 +45,26 @@ func TestDTW(t *testing.T) {
 			df: func(x, y interface{}) float64 {
 				xx := x.(float64)
 				yy := y.(float64)
-				diff := xx - yy
-				return math.Sqrt(diff * diff)
+				return math.Abs(xx - yy)
 			},
 			dist: 15,
 			path: [][2]int{
 				{0, 0}, {1, 1}, {1, 2}, {1, 3}, {2, 4}, {3, 5}, {4, 5}, {5, 6}, {6, 7}, {7, 8}, {8, 8}, {9, 9},
+			},
+			noError: true,
+		},
+		{
+			desc: "2D series",
+			s:    []point{{0, 0}, {1, 0}, {2, 0}},
+			t:    []point{{0, 1}, {1, 1}, {2, 1}},
+			df: func(x, y interface{}) float64 {
+				p1 := x.(point)
+				p2 := y.(point)
+				return math.Sqrt((p1.x-p2.x)*(p1.x-p2.x) + (p1.y-p2.y)*(p1.y-p2.y))
+			},
+			dist: 3,
+			path: [][2]int{
+				{0, 0}, {1, 1}, {2, 2},
 			},
 			noError: true,
 		},
@@ -57,8 +75,7 @@ func TestDTW(t *testing.T) {
 			df: func(x, y interface{}) float64 {
 				xx := x.(int)
 				yy := y.(int)
-				diff := float64(xx - yy)
-				return math.Sqrt(diff * diff)
+				return math.Abs(float64(xx - yy))
 			},
 			dist: 0,
 			path: [][2]int{
@@ -73,8 +90,7 @@ func TestDTW(t *testing.T) {
 			df: func(x, y interface{}) float64 {
 				xx := x.(int)
 				yy := y.(int)
-				diff := float64(xx - yy)
-				return math.Sqrt(diff * diff)
+				return math.Abs(float64(xx - yy))
 			},
 			dist: 1,
 			path: [][2]int{

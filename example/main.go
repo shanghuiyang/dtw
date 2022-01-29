@@ -9,10 +9,15 @@ import (
 )
 
 func dist(x, y interface{}) float64 {
-	xx := x.(int)
-	yy := y.(int)
-	diff := float64(xx - yy)
-	return math.Sqrt(diff * diff)
+	xx, ok := x.(int)
+	if !ok {
+		return 0
+	}
+	yy, ok := y.(int)
+	if !ok {
+		return 0
+	}
+	return math.Abs(float64(xx - yy))
 }
 
 func main() {
